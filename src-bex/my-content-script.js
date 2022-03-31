@@ -3,16 +3,12 @@
 
 export default function (/* bridge */) {
   // Hook into the bridge to listen for events sent from the client BEX.
-  /*
-  bridge.on('some.event', event => {
-    if (event.data.yourProp) {
+
+  bridge.on('say.hi.popup.event', (event) => {
+    if (event.data.message) {
       // Access a DOM element from here.
       // Document in this instance is the underlying website the contentScript runs on
-      const el = document.getElementById('some-id')
-      if (el) {
-        el.value = 'Quasar Rocks!'
-      }
+      alert('Popup says: ' + event.data.message);
     }
-  })
-  */
+  });
 }
