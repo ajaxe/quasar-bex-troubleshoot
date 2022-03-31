@@ -1,6 +1,8 @@
 <template>
   <q-page class="row items-center justify-evenly">
-    <button @click="sayHi">Say "hi"</button>
+    <button @click="sayHi">Say "hi" with send response key</button>
+    <br />
+    <button @click="sayHiNoResponse">Say "hi" no response</button>
   </q-page>
 </template>
 
@@ -8,13 +10,16 @@
 import { useQuasar } from 'quasar';
 
 const $q = useQuasar();
-const sayHi = async () => {
-  $q.bex
-    .send('say.hi.popup.event', { message: 'button was clicked' })
-    .then(() => console.log('resolved: say.hi.popup.event'));
+const sayHi = () => {
   const payload = { foo: 'baaz' };
   $q.bex
     .send('storage.set', payload)
     .then(() => console.log('resolved: storage.set'));
+};
+const sayHiNoResponse = () => {
+  const payload = { foo: 'baaz' };
+  $q.bex
+    .send('storage.set.no.reply', payload)
+    .then(() => console.log('resolved: storage.set.no.reply'));
 };
 </script>
